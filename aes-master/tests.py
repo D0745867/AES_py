@@ -74,11 +74,14 @@ class TestCbc(unittest.TestCase):
     def setUp(self):
         self.aes = AES(b'\x00' * 16)
         self.iv = b'\x01' * 16
-        self.message = b'my message'
+        self.message = b'VLSIDALABwithmorethan128'
 
     def test_single_block(self):
         """ Should be able to encrypt and decrypt single block messages. """
         ciphertext = self.aes.encrypt_cbc(self.message, self.iv)
+        print("\nplain text:" + str(self.message))
+        print("\nciphertext text:" + str(ciphertext))
+        print("\nDecPlain text:" + str(self.aes.decrypt_cbc(ciphertext, self.iv)))
         self.assertEqual(self.aes.decrypt_cbc(ciphertext, self.iv), self.message)
 
         # Since len(message) < block size, padding won't create a new block.

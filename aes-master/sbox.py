@@ -17,6 +17,7 @@ s_box = (
     0x8C, 0xA1, 0x89, 0x0D, 0xBF, 0xE6, 0x42, 0x68, 0x41, 0x99, 0x2D, 0x0F, 0xB0, 0x54, 0xBB, 0x16,
 )
 
+
 class GF:
     @staticmethod
     def G4_mul(x, y):
@@ -146,6 +147,7 @@ class AesBox:
             sBox.append(aes.Aes(x=i))  # 生成sBox
         return sBox
 
+
 import time
 
 # def AES_SBOX(x):
@@ -185,5 +187,5 @@ for i, s in enumerate(sBox):
     if (i + 1) % 16 == 0:
         print()
 end2 = time.time()
-print("non-Sox執行時間：%f 秒" % (end2 - start2))
-print("Sbox執行時間：%f 秒" % (end1 - start1))
+print("SBox執行時間：%f 秒" % (end2 - start2))
+print("non-SBox執行時間：%f 秒" % (end1 - start1))
